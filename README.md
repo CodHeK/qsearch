@@ -1,6 +1,6 @@
 ![logo](cover.png)
 
-![voila](https://img.shields.io/badge/npm-v1.0.3-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
+![voila](https://img.shields.io/badge/npm-v1.0.4-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
 
 ### Installation
 
@@ -32,15 +32,15 @@ Then just render it as :
 
 ```
 /* 
-        CONFIG PASSED AS PROPS: 
-        
-        data: The data that needs to be searched upon.
-        styles: Add custom styles to your search bar Component
-        onEnter: Enable search on ENTER or on the fly!
-        callback: mention a callback function to 
-                  receive your search data
-                  
-    */
+    CONFIG PASSED AS PROPS: 
+    
+    data: The data that needs to be searched upon.
+    styles: Add custom styles to your search bar Component
+    onEnter: Enable search on ENTER or on the fly!
+    callback: mention a callback function to 
+              receive your search data
+              
+*/
 ```
 
 

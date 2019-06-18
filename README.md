@@ -2,17 +2,23 @@
 
 ### Installation
 
-`npm install --save qsearch`
+```
+npm install --save qsearch
+```
 
 ### How To Use
 
 First import this component where you want to use it
 
-`import Search from 'qsearch';`
+```
+import Search from 'qsearch';
+```
 
 Then just render it as :
 
-`<Search config={config} /`
+```
+<Search config={config} />
+```
 
 ### Props
 

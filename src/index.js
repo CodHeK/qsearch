@@ -14,40 +14,41 @@ const Search = props => {
         return true;
     };
     
-    const add = (v) => {
+    const add = (v, index) => {
         let words = String(v).replace(/[^a-z0-9]/gi,' ').split(" ");
         for(const word of words) {
             if(word.length > 0) {
-                insert(Trie, word.toLowerCase());
-                console.log(word);
+                insert(Trie, word.toLowerCase(), index);
+                console.log(word.toLowerCase());
             }
         }
     }
     
-    const dfs = (obj) => {
+    const dfs = (obj, index) => {
         if(check(obj)) {
             for(const [_, v] of Object.entries(obj))
-                add(v);
+                add(v, index);
             return;
         }
         
         for(const [_, v] of Object.entries(obj)) {
             if(JSON.stringify(v)[0] === '{')
-                dfs(v);
+                dfs(v, index);
             else
-                add(v);
+                add(v, index);
         }
     };
     
     const genNode = () => {
         let temp = {
             'isLeaf': false,
-            'map': new Map()
+            'map': new Map(),
+            'indexes': []
         };
         return temp;
     };
     
-    const insert = (root, str) => {
+    const insert = (root, str, index) => {
         if(root === null) root = genNode();
         
         let temp = root;
@@ -55,9 +56,11 @@ const Search = props => {
             if(!temp.map.has(x))
                 temp.map.set(x, genNode());
             
+            temp.indexes.push(index);
             temp = temp.map.get(x);
         }
         temp.isLeaf = true;
+        temp.indexes.push(index);
         Trie = root;
     };
     
@@ -68,24 +71,35 @@ const Search = props => {
         for(const x of str) {
             temp = temp.map.get(x);
             
-            if(!temp) return false;
+            if(!temp) return [];
         }
         
-        return true;
+        return temp.indexes;
     };
     
-    for(const obj of data) {
-        dfs(obj);
+    for(let i = 0; i < data.length; i++) {
+        dfs(data[i], i);
+    };
+    
+    console.log(Trie);
+    
+    const filteredData = (e) => {
+        let searchedVal = search(Trie, e.target.value.toLowerCase());
+        let filtered = [];
+        for(let i = 0; i < searchedVal.length; i++)
+            filtered.push(data[i]);
+        
+        return filtered;
     };
     
     const inputSearch = (e) => {
-        callback(search(Trie, e.target.value.toLowerCase()));
+        callback(filteredData(e))
     };
     
     const inputSearchOnEnter = (e) => {
         if(e.which === 13)
-            callback(search(Trie, e.target.value.toLowerCase()));
-    }
+            callback(filteredData(e))
+    };
     
     let SearchBar;
     if(onEnter === false)

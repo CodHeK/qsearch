@@ -1,7 +1,7 @@
 import React from "react";
 
 const Search = props => {
-    let { data, styles, onEnter } = props.config;
+    let { data, styles, onEnter, callback } = props.config;
     
     let Trie = null;
     
@@ -79,12 +79,12 @@ const Search = props => {
     };
     
     const inputSearch = (e) => {
-        console.log(search(Trie, e.target.value.toLowerCase()));
+        callback(search(Trie, e.target.value.toLowerCase()));
     };
     
     const inputSearchOnEnter = (e) => {
         if(e.which === 13)
-            console.log(search(Trie, e.target.value.toLowerCase()));
+            callback(search(Trie, e.target.value.toLowerCase()));
     }
     
     let SearchBar;

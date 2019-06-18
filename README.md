@@ -68,6 +68,12 @@ class App extends Component {
         .then(data => this.setState({ data, }));
   }
   
+  /* Specify a callback to receive the 
+     filtered (search results) back from the Component */
+  getSearchData = (data) => {
+      console.log(data);
+  };
+  
   render() {
     const { data } = this.state;
     
@@ -84,6 +90,7 @@ class App extends Component {
       data: data, // the data that needs to be searched upon
       styles: SearchBarStyles, // add custom styles to your search bar
       onEnter: true // if you want to enable search on press of ENTER or search on the fly!
+      callback: this.getSearchData
     };
     
     return (

@@ -78,13 +78,13 @@ const Search = props => {
     let suggested = [];
     
     const traverse = (root, str) => {
+        // console.log(root, str, "81");
         if(root.isLeaf) {
             suggested.push(str);
             return;
         }
         for(const [k, v] of root.map) {
-            str += String(k);
-            traverse(v, str);
+            traverse(v, str+String(k));
         }
     };
     
@@ -92,14 +92,18 @@ const Search = props => {
         if(root === null) return false;
     
         let temp = root;
-        for(let i = 0; i < str.length-1; i++) {
+        for(let i = 0; i < str.length; i++) {
             temp = temp.map.get(str[i]);
         
             if(!temp) return [];
         }
+        
         console.log(temp);
-        if(!temp.isLeaf)
-            traverse(temp, str.slice(0, str.length-1));
+        if(!temp.isLeaf) {
+            for(const [k, v] of temp.map) {
+                traverse(v, str+String(k));
+            }
+        }
     };
     
     for(let i = 0; i < data.length; i++) {
@@ -115,7 +119,8 @@ const Search = props => {
 
         if (!onEnter)
             suggestions(Trie, e.target.value.toLowerCase(), suggested);
-
+        
+        //console.log(filtered, suggested, "120")
         return {
             filtered,
             suggested,

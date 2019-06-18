@@ -128,3 +128,6 @@ class App extends Component {
 
 export default App;
 ```
+### Also ...
+
+If you find any bugs/edge-cases not taken care of :see_no_evil:, feel free to open an [issue](https://github.com/CodHeK/qsearch/issues). :smiley:

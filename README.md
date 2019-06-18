@@ -1,4 +1,4 @@
-## qsearch
+![logo](logo.png)
 
 ### Installation
 

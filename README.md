@@ -1,4 +1,4 @@
-## React Color Component
+## qsearch
 
 ### Installation
 

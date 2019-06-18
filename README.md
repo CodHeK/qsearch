@@ -61,6 +61,7 @@ class App extends Component {
       data: null,
     }
   }
+  
   componentWillMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(resp => resp.json())
@@ -69,12 +70,27 @@ class App extends Component {
   
   render() {
     const { data } = this.state;
+    
+    const SearchBarStyles = {
+      width: '300px',
+      height: '50px',
+      margin: '2%',
+      borderRadius: '10px',
+      paddingLeft: '5px'
+    };
+    
+    // Specify a simple CONFIGURATION for your search bar
+    const config = {
+      data: data, // the data that needs to be searched upon
+      styles: SearchBarStyles, // add custom styles to your search bar
+      onEnter: true // if you want to enable search on press of ENTER or search on the fly!
+    };
+    
     return (
-        data && <Search data={data} />
+          data && <Search config={config} />
     );
   }
 }
 
 export default App;
-
 ```

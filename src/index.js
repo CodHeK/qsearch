@@ -1,7 +1,7 @@
 import React from "react";
 
 const Search = props => {
-    let { data } = props;
+    let { data, styles, onEnter } = props.config;
     
     let Trie = null;
     
@@ -78,17 +78,26 @@ const Search = props => {
         dfs(obj);
     };
     
-    console.log(Trie);
     const inputSearch = (e) => {
-        console.log(e.target.value);
-        search(Trie, e.target.value.toLowerCase())
-        console.log(search(Trie, e.target.value.toLowerCase()))
+        console.log(search(Trie, e.target.value.toLowerCase()));
     };
     
+    const inputSearchOnEnter = (e) => {
+        if(e.which === 13)
+            console.log(search(Trie, e.target.value.toLowerCase()));
+    }
+    
+    let SearchBar;
+    if(onEnter === false)
+        SearchBar =  <input className="input-field" style={styles}
+                            placeholder="Search" onChange={ (e) => inputSearch(e) } />;
+    else
+        SearchBar =  <input className="input-field" style={styles}
+                            placeholder="Search" onKeyPress={ (e) => inputSearchOnEnter(e) } />;
     
     return (
     <div>
-        <input className="input-field" placeholder="Search" onChange={(e) => inputSearch(e) } />
+        {SearchBar}
     </div>
     );
 };

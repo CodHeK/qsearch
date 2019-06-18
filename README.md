@@ -12,7 +12,7 @@ First import this component where you want to use it
 
 Then just render it as :
 
-`<Search data={data} />`
+`<Search config={config} /`
 
 ### Props
 

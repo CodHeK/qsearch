@@ -75,10 +75,11 @@ class App extends Component {
   }
   
   /* Specify a callback to receive the 
-     filtered (search results) back from the Component */
+     filtered entries and suggested words back from the Component */
      
   getSearchData = (data) => {
-      console.log(data);
+        const { filtered, suggested } = data;
+        this.setState({ filtered, suggested });
   };
   
   render() {

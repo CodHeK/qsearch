@@ -19,7 +19,6 @@ const Search = props => {
         for(const word of words) {
             if(word.length > 0) {
                 insert(Trie, word.toLowerCase(), index);
-                console.log(word.toLowerCase());
             }
         }
     }
@@ -43,7 +42,7 @@ const Search = props => {
         let temp = {
             'isLeaf': false,
             'map': new Map(),
-            'indexes': []
+            'indexes': new Map()
         };
         return temp;
     };
@@ -56,11 +55,11 @@ const Search = props => {
             if(!temp.map.has(x))
                 temp.map.set(x, genNode());
             
-            temp.indexes.push(index);
+            temp.indexes.set(index, true);
             temp = temp.map.get(x);
         }
         temp.isLeaf = true;
-        temp.indexes.push(index);
+        temp.indexes.set(index, true)
         Trie = root;
     };
     
@@ -81,13 +80,11 @@ const Search = props => {
         dfs(data[i], i);
     };
     
-    console.log(Trie);
-    
     const filteredData = (e) => {
         let searchedVal = search(Trie, e.target.value.toLowerCase());
         let filtered = [];
-        for(let i = 0; i < searchedVal.length; i++)
-            filtered.push(data[i]);
+        for(const [idx, _] of searchedVal)
+            filtered.push(data[idx]);
         
         return filtered;
     };

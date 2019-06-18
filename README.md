@@ -28,7 +28,19 @@ Then just render it as :
 
 ### Props
 
-Needs to be an array of JSON objects, can also have nested objects!
+```
+/* 
+        CONFIG PASSED AS PROPS: 
+        
+        data: The data that needs to be searched upon.
+        styles: Add custom styles to your search bar Component
+        onEnter: Enable search on ENTER or on the fly!
+        callback: mention a callback function to 
+                  receive your search data
+                  
+    */
+```
+
 
 #### Example data :
 ```
@@ -99,17 +111,6 @@ class App extends Component {
       paddingLeft: '5px'
     };
     
-    /* 
-        CONFIG:
-        
-        data: The data that needs to be searched upon.
-        styles: Add custom styles to your search bar Component
-        onEnter: Enable search on ENTER or on the fly!
-        callback: mention a callback function to 
-                  receive your search data
-                  
-    */
-   
     const config = {
       data: data,
       styles: SearchBarStyles,

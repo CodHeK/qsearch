@@ -6,6 +6,12 @@
 npm install --save qsearch
 ```
 
+### Demo
+
+Try out the demo [App](https://nifty-elion-04a803.netlify.com/).
+
+Link to the Demo [App repository](https://github.com/CodHeK/qsearch-demo-app).
+
 ### How To Use
 
 First import this component where you want to use it

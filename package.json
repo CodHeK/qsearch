@@ -1,8 +1,9 @@
 {
   "name": "qsearch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "build/index.js",
+  "keywords": ["search", "trie", "suggestions", "filtering", "searching"],
   "peerDependencies": {
     "react": "^16.8.6"
   },

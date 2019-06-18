@@ -70,6 +70,7 @@ class App extends Component {
   
   /* Specify a callback to receive the 
      filtered (search results) back from the Component */
+     
   getSearchData = (data) => {
       console.log(data);
   };
@@ -85,11 +86,21 @@ class App extends Component {
       paddingLeft: '5px'
     };
     
-    // Specify a simple CONFIGURATION for your search bar
+    /* 
+        CONFIG:
+        
+        data: The data that needs to be searched upon.
+        styles: Add custom styles to your search bar Component
+        onEnter: Enable search on ENTER or on the fly!
+        callback: mention a callback function to 
+                  receive your search data
+                  
+    */
+   
     const config = {
-      data: data, // the data that needs to be searched upon
-      styles: SearchBarStyles, // add custom styles to your search bar
-      onEnter: true // if you want to enable search on press of ENTER or search on the fly!
+      data: data,
+      styles: SearchBarStyles,
+      onEnter: true,
       callback: this.getSearchData
     };
     

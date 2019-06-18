@@ -1,5 +1,7 @@
 ![logo](cover.png)
 
+![voila](https://img.shields.io/badge/npm-v1.0.3-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
+
 ### Installation
 
 ```
